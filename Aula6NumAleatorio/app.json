@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Aula6NumAleatorio",
+    "slug": "Aula6NumAleatorio",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

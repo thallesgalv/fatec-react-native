@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Aula6Gasolina",
+    "slug": "Aula6Gasolina",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

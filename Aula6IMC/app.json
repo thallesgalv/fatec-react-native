@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Aula6IMC",
+    "slug": "Aula6IMC",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

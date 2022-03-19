@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Aula5Contador",
+    "slug": "Aula5Contador",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

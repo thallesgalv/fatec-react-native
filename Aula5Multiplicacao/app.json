@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Aula5Multiplicacao",
+    "slug": "Aula5Multiplicacao",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
