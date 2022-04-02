@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Aula7Vagas",
+    "slug": "Aula7Vagas",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

@@ -1,74 +1,203 @@
+import Slider from '@react-native-community/slider'
 import { Picker } from '@react-native-picker/picker'
-import React, { useState } from 'react'
-import FormField from './components/FormField'
-import { Title, Wrapper } from './globalStyles'
+import { StatusBar } from 'expo-status-bar'
+import React from 'react'
+import {
+  Pressable,
+  StyleSheet,
+  Switch,
+  Text,
+  TextInput,
+  View,
+} from 'react-native'
 
 export default function App() {
-  const [nameInput, setNameInput] = useState('')
-  const [ageInput, setAgeInput] = useState('')
-  const [genderInput, setGenderInput] = useState(null)
+  const [nameInput, setNameInput] = React.useState('')
+  const [ageInput, setAgeInput] = React.useState('')
+  const [genderInput, setGenderInput] = React.useState(null)
+  const [schoolingLevelInput, setSchoolingLevelInput] = React.useState(null)
+  const [limitInput, setLimitInput] = React.useState(0)
+  const [isBrazilianInput, setIsBrazilianInput] = React.useState(false)
+  const [dataIsVisible, setDataIsVisible] = React.useState(false)
+
+  const showData = () => {
+    setDataIsVisible(true)
+  }
 
   return (
-    <Wrapper>
-      <Title>Abertura de Conta</Title>
-      <FormField
-        labelText='Nome:'
-        keyboardType='default'
-        inputValue={nameInput}
-        setInputValue={setNameInput}
-      />
-      <FormField
-        labelText='Idade:'
-        keyboardType='numeric'
-        inputValue={ageInput}
-        setInputValue={setAgeInput}
-      />
+    <View style={styles.container}>
+      <Text style={styles.title}>Abertura de Conta</Text>
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Nome:</Text>
+        <TextInput
+          style={styles.input}
+          value={nameInput}
+          onChangeText={text => setNameInput(text)}
+        />
+      </View>
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Idade:</Text>
+        <TextInput
+          style={styles.input}
+          value={ageInput}
+          onChangeText={text => setAgeInput(text)}
+          keyboardType='numeric'
+        />
+      </View>
+      <View style={styles.pickerContainer}>
+        <Text style={styles.label}>Gênero:</Text>
         <Picker
+          style={styles.picker}
           selectedValue={genderInput}
           onValueChange={itemValue => setGenderInput(itemValue)}
         >
-          <Picker.Item key={'masculino'} label='Masculino' value='masculino' />
-          <Picker.Item key={'feminino'} label='Feminino' value='feminino' />
+          <Picker.Item label='Selecione o gênero' value='' />
+          <Picker.Item label='Masculino' value='masculino' />
+          <Picker.Item label='Feminino' value='feminino' />
         </Picker>
-    </Wrapper>
+      </View>
+      <View style={styles.pickerContainer}>
+        <Text style={styles.label}>Escolaridade:</Text>
+        <Picker
+          style={styles.picker}
+          selectedValue={schoolingLevelInput}
+          onValueChange={itemValue => setSchoolingLevelInput(itemValue)}
+        >
+          <Picker.Item label='Selecione a escolaridade' value='' />
+          <Picker.Item
+            label='Ensino Fundamental incompleto'
+            value='ensino fundamental incompleto'
+          />
+          <Picker.Item
+            label='Ensino Fundamental completo'
+            value='ensino fundamental completo'
+          />
+          <Picker.Item
+            label='Ensino Médio incompleto'
+            value='ensino médio incompleto'
+          />
+          <Picker.Item
+            label='Ensino Médio completo'
+            value='ensino médio completo'
+          />
+          <Picker.Item
+            label='Ensino Superior incompleto'
+            value='ensino superior incompleto'
+          />
+          <Picker.Item
+            label='Ensino Superior completo'
+            value='ensino superior completo'
+          />
+        </Picker>
+      </View>
+      <View style={styles.sliderContainer}>
+        <Text style={styles.label}>Limite:</Text>
+        <Slider
+          style={styles.slider}
+          minimumValue={10}
+          maximumValue={100}
+          step={5}
+          onValueChange={value => setLimitInput(value)}
+          value={limitInput}
+        />
+        <Text>{limitInput.toFixed(0)}</Text>
+      </View>
+      <View style={styles.inputContainer}>
+        <Text style={styles.label}>Brasileiro:</Text>
+        <Switch
+          style={styles.input}
+          value={isBrazilianInput}
+          onValueChange={value => setIsBrazilianInput(value)}
+        />
+      </View>
+      <View style={styles.buttonContainer}>
+        <Pressable style={styles.button} onPress={showData}>
+          <Text style={styles.buttonText}>Confirmar</Text>
+        </Pressable>
+      </View>
+
+      {dataIsVisible && (
+        <View style={styles.result}>
+          <Text style={styles.subtitle}>Dados Informados:</Text>
+          <Text>Nome: {nameInput || 'Nome não informado'}</Text>
+          <Text>Idade: {ageInput || 'Idade não informada'}</Text>
+          <Text>Gênero: {genderInput}</Text>
+          <Text>Escolaridade: {schoolingLevelInput}</Text>
+          <Text>Limite: {limitInput}</Text>
+          <Text>Brasileiro: {isBrazilianInput ? 'Sim' : 'Não'}</Text>
+        </View>
+      )}
+
+      <StatusBar style='auto' />
+    </View>
   )
 }
 
-{
-  /* <Picker.Item key={1} label='Sem instrução' value='sem intrução' />
-        <Picker.Item
-          key={2}
-          label='Ensino Fundamental incompleto'
-          value='ensino fundamental incompleto'
-        />
-        <Picker.Item
-          key={3}
-          label='Ensino Fundamental completo'
-          value='ensino fundamental completo'
-        />
-        <Picker.Item
-          key={4}
-          label='Ensino Médio incompleto'
-          value='ensino médio incompleto'
-        />
-        <Picker.Item
-          key={5}
-          label='Ensino Médio completo'
-          value='ensino médio completo'
-        />
-        <Picker.Item
-          key={5}
-          label='Ensino Superior incompleto'
-          value='ensino superior incompleto'
-        />
-        <Picker.Item
-          key={5}
-          label='Ensino Superior completo'
-          value='ensino superior completo'
-        />
-      </Picker> */
-}
-
-{
-  /* <FormFieldWrapper><Label>Sexo:</Label></FormFieldWrapper> */
-}
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    justifyContent: 'center',
+  },
+  title: {
+    fontSize: 30,
+    textAlign: 'center',
+  },
+  subtitle: {
+    fontSize: 22,
+    textAlign: 'center',
+  },
+  inputContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 16,
+  },
+  label: {
+    marginRight: 8,
+  },
+  input: {
+    borderWidth: 1,
+    padding: 2,
+    width: '60%',
+    borderRadius: 4,
+    paddingLeft: 2,
+  },
+  pickerContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  picker: {
+    width: '60%',
+  },
+  sliderContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
+  },
+  slider: {
+    width: 200,
+  },
+  buttonContainer: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  button: {
+    backgroundColor: '#000',
+    borderRadius: 4,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    width: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+  },
+  result: {
+    marginTop: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+})
