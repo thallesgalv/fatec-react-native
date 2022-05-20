@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Aula9ListaCompras",
+    "slug": "Aula9ListaCompras",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

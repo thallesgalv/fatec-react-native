@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Aula10ConversorMoedas",
+    "slug": "Aula10ConversorMoedas",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
