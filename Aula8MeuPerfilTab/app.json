@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Aula8MeuPerfilTab",
+    "slug": "Aula8MeuPerfilTab",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}

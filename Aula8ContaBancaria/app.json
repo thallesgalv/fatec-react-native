@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "name": "Aula8ContaBancaria",
+    "slug": "Aula8ContaBancaria",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
